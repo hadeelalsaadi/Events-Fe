@@ -19,3 +19,17 @@ export const fetchEventById = (event_id)=>{
     })
 
 }
+
+export const getUserbyUsername= (username)=>{
+    return api.get(`/users/${username}`).then((res) => {
+        const user = res.data.user;
+        return user;
+    }).catch((err) => {
+        console.error("Error fetching User", err);
+        throw err;
+    });
+}
+
+export const addUser=(userData)=>{
+    return api.post(`/users`, userData);
+}

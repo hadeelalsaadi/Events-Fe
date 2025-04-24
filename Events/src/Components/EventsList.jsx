@@ -26,6 +26,7 @@ export const EventsList = ()=>{
         return <p>Loading...</p>;
       }
     return (
+        
        <section>
    <ul>
             

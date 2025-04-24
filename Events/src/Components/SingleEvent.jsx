@@ -31,8 +31,8 @@ export const SingleEvent = ()=>{
             <h3>{event.description}</h3>
             <img src={event.url_img} alt={`image of ${event.title}`}/>
             <h3>Location : {event.location}</h3>
-            <h3>Starts at : {event.start_time}</h3>
-            <h3>Ends at {event.end_time}</h3>
+            <h3>Starts at :  {new Date(event.start_time).toLocaleDateString()}</h3>
+            <h3>Ends at  {new Date(event.end_time).toLocaleDateString()}</h3>
             <h3>TimeZone: {event.timezone}</h3></FancyBox>
            
         </section>
