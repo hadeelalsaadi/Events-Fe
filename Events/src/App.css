@@ -88,3 +88,24 @@ button {
 button:hover {
   background-color: #b989e0;
 }
+.textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.category {
+  width: 100%;
+  padding: 5px;
+  margin: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  
+}

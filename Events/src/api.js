@@ -33,3 +33,18 @@ export const getUserbyUsername= (username)=>{
 export const addUser=(userData)=>{
     return api.post(`/users`, userData);
 }
+
+
+export const addEvent =(eventDetails)=>{
+    return api.post(`/events`, eventDetails).then(({data})=>data).catch((err) => {
+        console.error("Error posting Item!", err);
+        throw err;
+    });
+}
+
+export const postAttendee=(attendee)=>{
+    return api.post('/event_attendees',attendee).then(({data})=>data).catch((err) => {
+        console.error("Error posting attendee", err);
+        throw err;
+    });
+}

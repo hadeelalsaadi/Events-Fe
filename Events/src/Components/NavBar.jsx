@@ -19,7 +19,7 @@ export const Navbar = () => {
       {user ? (
         <>
           <Link to="/profile">Profile</Link>
-          <span>Hello, {user.username}</span>
+          <span>{user.username}</span>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
