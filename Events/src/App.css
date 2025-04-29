@@ -1,5 +1,7 @@
+
+
 .header{
-   height: 20vh; 
+   height: 25vh; 
    display: flex;
    align-items: center;
    justify-content: center;
@@ -7,11 +9,12 @@
    text-align: center;
    font-size: 2.5rem;
    font-weight: bold;
-   font-family: 'Segoe UI', sans-serif;
    color: #222;
- 
+   position: relative;
 }
-h1{ margin:0 }
+h1{ margin:0;
+  padding-bottom: 40px;
+  }
 
 .fancy {
    display: flex;
@@ -35,3 +38,74 @@ h1{ margin:0 }
    transform: translateY(-5px);
    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
  }
+ .navbar {
+  background-color: #ceace9;
+  display: flex;
+  gap:5rem;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+}
+
+.signup {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input:focus {
+  border-color: #c58ff1;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #963ce0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+}
+
+button:hover {
+  background-color: #b989e0;
+}
+.textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.category {
+  width: 100%;
+  padding: 5px;
+  margin: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  
+}

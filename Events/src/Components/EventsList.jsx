@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { fetchAllEvents } from "../api"
 import { EventCard } from "./EventCard"
+import { PostEvent } from "./PostEvent"
+import { Link, redirect } from "react-router"
+import { UserContext } from "../context/UserContext"
 
 
 export const EventsList = ()=>{
+const {user}= useContext(UserContext)
     const [events, setEvents]= useState([])
     const [isLoading, setIsLoading]=useState(true)
     const [isError, setIsError]=useState(null)
@@ -25,20 +29,44 @@ export const EventsList = ()=>{
     if (isLoading) {
         return <p>Loading...</p>;
       }
+
+
+      const handleButtonClick =()=>{
+        if (!user) {
+            alert("Please log in to continue");
+            redirect("/events")
+          } else if (user.user_role === "member") {
+            alert("Only admins can post content");
+            redirect("/events")
+          } 
+      }
     return (
+<>
+        <section>
+        {user && user.user_role !== "member" ? (
+      <Link to="/events/addevent">
+        <button >Add Event</button>
+      </Link>
+    ) : (
+      
+      <button onClick={handleButtonClick}>Add Event</button>
+    )}
+          </section>
+        
        <section>
    <ul>
             
             {events.map((event)=>{
                 return (
-                    <EventCard  event={event}/>
+                    <EventCard key={event.event_id} event={event} setEvents={setEvents} user={user}/>
+
                     
                 )
             })}
         </ul>
        </section>
      
-    
+    </>
     )
    
 
