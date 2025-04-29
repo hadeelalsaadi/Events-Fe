@@ -1,24 +1,34 @@
 
 //import { Link } from "react-router"
+import { DeleteEvent } from './DeleteEvent';
 import { FancyBox } from './FancyBox'
 import { Link } from "react-router"
 export const EventCard = (props)=>{
-    const {event} = props
+    const {event, setEvents, user} = props
+
+    const handleEventDelete = (deletedEventId) => {
+        setEvents((prevEvents) => prevEvents.filter((event) => event.event_id !== deletedEventId));
+      };
   
     return (
-        <Link to={`/events/${event.event_id}`}>
+        <section>
+<Link to={`/events/${event.event_id}`}>
        <FancyBox>
-             
+            
             <h2>{event.title}</h2>
             
             <img src={event.url_img} alt={`image of ${event.title}`}/>
             <h3>Location : {event.location}</h3>
             <h3>Starts at : {event.start_time}</h3>
             <h3>Ends at {event.end_time}</h3>
+           
         
        </FancyBox>
        </Link>
+        <DeleteEvent  event_id={event.event_id} onDelete={handleEventDelete} user={user}/>
             
+        </section>
+        
 
             
 

@@ -2,6 +2,14 @@ import axios from 'axios'
 const api = axios.create({
     baseURL:'https://events-be-mnrt.onrender.com/api'
 })
+
+export const deleteEvent =(event_id)=>{
+    return api.delete(`/events/${event_id}`)
+}
+
+
+
+
 export const fetchAllEvents= ()=>{
     return api.get('/events').then(({data})=>{
         return data.events
@@ -43,8 +51,10 @@ export const addEvent =(eventDetails)=>{
 }
 
 export const postAttendee=(attendee)=>{
+    
     return api.post('/event_attendees',attendee).then(({data})=>data).catch((err) => {
         console.error("Error posting attendee", err);
         throw err;
     });
 }
+

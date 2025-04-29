@@ -3,10 +3,10 @@ import {useParams}from 'react-router'
 import { fetchEventById } from '../api'
 import { FancyBox } from './FancyBox'
 import { UserContext } from '../context/UserContext'
-export const SingleEvent = (user)=>{
-   
-    console.log(user)
-   
+import { EventSignUp } from './EventSignUp'
+import { DeleteEvent } from './DeleteEvent'
+export const SingleEvent = ()=>{
+    const {user}= useContext(UserContext)
     
     const {event_id}= useParams()
     const [event, setEvent]=useState([])
@@ -33,13 +33,16 @@ export const SingleEvent = (user)=>{
     return (
         <section>
            <FancyBox>
-           <h2>{event.title}</h2>
+           <h1>{event.title}</h1>
             <h3>{event.description}</h3>
             <img src={event.url_img} alt={`image of ${event.title}`}/>
             <h3>Location : {event.location}</h3>
             <h3>Starts at :  {new Date(event.start_time).toLocaleDateString()}</h3>
             <h3>Ends at  {new Date(event.end_time).toLocaleDateString()}</h3>
-            <h3>TimeZone: {event.timezone}</h3></FancyBox> 
+            <h3>TimeZone: {event.timezone}</h3>
+            <EventSignUp event={event} user={user}/>
+            
+            </FancyBox> 
            
         </section>
     )

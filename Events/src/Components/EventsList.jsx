@@ -11,7 +11,7 @@ const {user}= useContext(UserContext)
     const [events, setEvents]= useState([])
     const [isLoading, setIsLoading]=useState(true)
     const [isError, setIsError]=useState(null)
-console.log(user)
+
     useEffect(()=>{
         setIsLoading(true)
         setIsError(null)
@@ -58,7 +58,8 @@ console.log(user)
             
             {events.map((event)=>{
                 return (
-                    <EventCard  event={event}/>
+                    <EventCard key={event.event_id} event={event} setEvents={setEvents} user={user}/>
+
                     
                 )
             })}
