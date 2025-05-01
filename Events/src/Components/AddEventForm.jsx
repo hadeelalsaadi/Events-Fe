@@ -9,7 +9,6 @@ const categories = [
     { category_id: 7, category_name: "Health & Wellness"},
     { category_id: 8, category_name: "Education" },
 ]
-
 export const AddeventForm =({ onSubmit, user })=>{
     const [eventDetails, setEventdetails]= useState({
         title: "",
@@ -18,10 +17,10 @@ export const AddeventForm =({ onSubmit, user })=>{
         genre_id: "",
         max_attendees: 0,
         location: "",
-        start_time: "",
-        end_time:"",
-        timezone:""
-
+        start_time:  new Date().toISOString().slice(0, 16),
+        end_time:new Date(Date.now() + 7200000).toISOString().slice(0, 16),
+        timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,
+        organizer_id:user? user.user_id : ""
     })
     useEffect(() => {
         if (user?.user_id) {
@@ -34,7 +33,6 @@ export const AddeventForm =({ onSubmit, user })=>{
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        
         setEventdetails((prev) => ({
             ...prev,
             [name]: value,
@@ -42,7 +40,7 @@ export const AddeventForm =({ onSubmit, user })=>{
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(eventDetails)
+        console.log("New event details ", eventDetails)
         if (!user) {
             alert("You must be logged in to post an item!");
             return;
@@ -140,34 +138,38 @@ export const AddeventForm =({ onSubmit, user })=>{
                 />
             </div>
             <div>
-            <input
+            <label htmlFor="start_time">Start Time (Required)</label>
+                <input
                     type="datetime-local"
+                    id="start_time"
                     name="start_time"
                     value={eventDetails.start_time}
                     onChange={handleChange}
-                    placeholder="When event starts?"
-                   
+                    required
                 />
             </div>
             <div>
-            <input
+            <label htmlFor="end_time">End Time (Required)</label>
+                <input
                     type="datetime-local"
+                    id="end_time"
                     name="end_time"
                     value={eventDetails.end_time}
                     onChange={handleChange}
-                    placeholder="When event ends?"
-                   
+                    required
                 />
             </div>
             <div>
-            <input
+            <label htmlFor="timezone">Timezone</label>
+                <input
                     type="text"
+                    id="timezone"
                     name="timezone"
                     value={eventDetails.timezone}
                     onChange={handleChange}
-                    placeholder="TimeZone if you know!"
-                   
+                    placeholder="e.g. America/New_York"
                 />
+                <small>Current timezone: {eventDetails.timezone}</small>
             </div>
 
             <button

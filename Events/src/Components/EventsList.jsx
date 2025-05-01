@@ -16,6 +16,7 @@ const {user}= useContext(UserContext)
         setIsLoading(true)
         setIsError(null)
         fetchAllEvents().then((events)=>{
+
             setEvents(events)
             setIsLoading(false)
         }).catch((err)=>{
@@ -35,21 +36,22 @@ const {user}= useContext(UserContext)
         if (!user) {
             alert("Please log in to continue");
             redirect("/events")
-          } else if (user.user_role === "member") {
-            alert("Only admins can post content");
+          } else if (user.user_role !== "admin") {
+            alert("Only admins  users can post an event");
             redirect("/events")
           } 
       }
     return (
 <>
         <section>
-        {user && user.user_role !== "member" ? (
+        {user && user.user_role === "admin" ? (
       <Link to="/events/addevent">
         <button >Add Event</button>
       </Link>
     ) : (
       
-      <button onClick={handleButtonClick}>Add Event</button>
+      <button onClick={handleButtonClick} disabled={!user}
+      className={!user ? "disabled-button" : "button"}>Add Event</button>
     )}
           </section>
         

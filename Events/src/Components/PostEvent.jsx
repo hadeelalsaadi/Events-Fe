@@ -12,6 +12,8 @@ export const PostEvent =()=>{
             alert("You must be logged in to post an item!");
             return;
         }
+        console.log(eventDetails);
+        
         addEvent(eventDetails)
         .then(()=>{
             setMessage("Item Posted Successfully!");
@@ -27,9 +29,10 @@ export const PostEvent =()=>{
     return (
         <section>
             <h2>Post Event</h2>
-            <AddeventForm onSubmit={handleAddEventSubmit} user={user}/>
-            {message && <p>{message}</p>}
+            {message && <p className="message">{message}</p>}
             {error && <p>{error}</p>}
+            <AddeventForm onSubmit={handleAddEventSubmit} user={user}/>
+           
 
        
         </section>

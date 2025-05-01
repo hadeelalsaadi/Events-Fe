@@ -3,7 +3,7 @@ import { UserContext } from '../context/UserContext';
 
 export const Profile = () => {
   const { user,logout } = useContext(UserContext);
-console.log(user)
+
   return (
     <div>
       <h2>Hello {user.name} 👋</h2>

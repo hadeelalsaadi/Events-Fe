@@ -44,7 +44,10 @@ export const addUser=(userData)=>{
 
 
 export const addEvent =(eventDetails)=>{
-    return api.post(`/events`, eventDetails).then(({data})=>data).catch((err) => {
+
+    console.log("from API here..",eventDetails)
+    return api.post(`/events`, eventDetails).then(({data})=> {
+    }).catch((err) => {
         console.error("Error posting Item!", err);
         throw err;
     });

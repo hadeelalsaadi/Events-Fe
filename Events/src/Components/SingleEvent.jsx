@@ -5,6 +5,7 @@ import { FancyBox } from './FancyBox'
 import { UserContext } from '../context/UserContext'
 import { EventSignUp } from './EventSignUp'
 import { DeleteEvent } from './DeleteEvent'
+import { formatEventDate } from '../utils'
 export const SingleEvent = ()=>{
     const {user}= useContext(UserContext)
     
@@ -30,6 +31,8 @@ export const SingleEvent = ()=>{
     if (isLoading) {
         return <p>Loading...</p>;
       }
+     
+      
     return (
         <section>
            <FancyBox>
@@ -37,9 +40,11 @@ export const SingleEvent = ()=>{
             <h3>{event.description}</h3>
             <img src={event.url_img} alt={`image of ${event.title}`}/>
             <h3>Location : {event.location}</h3>
-            <h3>Starts at :  {new Date(event.start_time).toLocaleDateString()}</h3>
-            <h3>Ends at  {new Date(event.end_time).toLocaleDateString()}</h3>
-            <h3>TimeZone: {event.timezone}</h3>
+            <h3>Starts at : {formatEventDate(event.start_time)}</h3>
+
+            <h3>Ends at:{formatEventDate(event.end_time)}</h3>
+            <h3>TimeZone:  {event.timezone || 'Not specified'}</h3>
+
             <EventSignUp event={event} user={user}/>
             
             </FancyBox> 

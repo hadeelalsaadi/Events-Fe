@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addEventToCalendar, signIn, isSignedIn } from "../services/googleCalender";
 import { postAttendee } from "../api";
+import { redirect } from "react-router";
 
 export const EventSignUp = ({ event, user }) => {
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -59,8 +60,6 @@ export const EventSignUp = ({ event, user }) => {
       }
 
       await postAttendee(attendee);
-      console.log("Signed up user:", attendee);
-      
       setIsSignedUp(true);
       return true;
     } catch (error) {
@@ -93,7 +92,7 @@ export const EventSignUp = ({ event, user }) => {
     }
   };
 
-  // Create button text based on state
+  
   const getButtonText = () => {
     if (isSignedUp) return "Signed Up!";
     if (isSigningUp) return "Processing...";
@@ -105,6 +104,7 @@ export const EventSignUp = ({ event, user }) => {
     <button 
       onClick={handleButtonClick} 
       disabled={isSignedUp || isSigningUp || calendarStatus === "adding"}
+      className={isSignedUp|| isSigningUp||calendarStatus==="addin"? "disabled-button":" button"}
       >
       {getButtonText()}
     </button>

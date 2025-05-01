@@ -1,16 +1,21 @@
 
 
-.header{
-   height: 25vh; 
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: #c58ff1;
-   text-align: center;
-   font-size: 2.5rem;
-   font-weight: bold;
-   color: #222;
-   position: relative;
+.header {
+  height: 25vh; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c58ff1;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: for visual separation */
 }
 h1{ margin:0;
   padding-bottom: 40px;
@@ -21,17 +26,15 @@ h1{ margin:0;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   
    background: #ffffff;
    margin: 30px auto;
    padding: 40px;
    width: 60%;
-   
    border-radius: 20px;
    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
    text-align: center;
- 
    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   margin-top: 10vh;
  }
  
  .fancy:hover {
@@ -82,7 +85,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: large;
+  font-size: 2rem;
+  font-family: sarif;
+  font-weight: bold;
 }
 
 button:hover {
@@ -108,4 +113,14 @@ button:hover {
   box-sizing: border-box;
   background-color: white;
   
+}
+
+.disabled-button {
+  background-color: rgb(220, 208, 221);
+  color: rgb(3, 3, 3);
+  cursor: not-allowed;
+}
+ 
+.message{
+  color: green;
 }
