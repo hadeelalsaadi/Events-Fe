@@ -14,20 +14,20 @@ export const EventCard = (props)=>{
   
     return (
         <section>
-<Link to={`/events/${event.event_id}`}>
+
        <FancyBox>
-            
+       <Link to={`/events/${event.event_id}`}>
             <h2>{event.title}</h2>
             <img src={event.url_img} alt={`image of ${event.title}`}/>
-            <h3>Location: {event.location}</h3>
-            <h3>Starts at: {formatEventDate(event.start_time)}</h3>
-            <h3>Ends at: {formatEventDate(event.end_time)}</h3>
-            
-           
+         </Link> 
+         <h3>Location: {event.location}</h3>
+         <h3>Starts at: {formatEventDate(event.start_time)}</h3>
+         <h3>Ends at: {formatEventDate(event.end_time)}</h3>
+         <DeleteEvent  event_id={event.event_id} onDelete={handleEventDelete} user={user}/>
         
        </FancyBox>
-       </Link>
-        <DeleteEvent  event_id={event.event_id} onDelete={handleEventDelete} user={user}/>
+       
+        
             
         </section>
         

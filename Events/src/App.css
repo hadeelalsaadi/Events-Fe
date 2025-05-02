@@ -29,7 +29,7 @@ h1{ margin:0;
    background: #ffffff;
    margin: 30px auto;
    padding: 40px;
-   width: 60%;
+   width: 50%;
    border-radius: 20px;
    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
    text-align: center;
@@ -124,3 +124,12 @@ button:hover {
 .message{
   color: green;
 }
+
+img{
+  width:75%;
+  }
+  .edit{
+    margin: 20px;
+    margin-bottom: 0px;
+    font-size: large;
+  }

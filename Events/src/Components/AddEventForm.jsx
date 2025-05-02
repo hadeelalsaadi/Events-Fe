@@ -14,7 +14,7 @@ export const AddeventForm =({ onSubmit, user })=>{
         title: "",
         description:"",
         url_img:"",
-        genre_id: "",
+        genre_id:"",
         max_attendees: 0,
         location: "",
         start_time:  new Date().toISOString().slice(0, 16),

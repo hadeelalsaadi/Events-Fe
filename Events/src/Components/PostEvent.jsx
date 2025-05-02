@@ -12,7 +12,7 @@ export const PostEvent =()=>{
             alert("You must be logged in to post an item!");
             return;
         }
-        console.log(eventDetails);
+        
         
         addEvent(eventDetails)
         .then(()=>{

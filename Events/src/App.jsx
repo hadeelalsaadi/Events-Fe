@@ -12,6 +12,7 @@ import { PostEvent } from './Components/PostEvent'
 import { initClient } from './services/googleCalender'
 import { gapi } from 'gapi-script'
 import { DeleteEvent } from './Components/DeleteEvent'
+import { EditEventForm } from './Components/EditEventForm'
 
 
 
@@ -82,6 +83,7 @@ function App() {
        <Route path ="/signup" element= {<SignUp/>}/> 
        <Route path="/events/addevent" element={<PostEvent/>}/>
        <Route path = "/events/:event_id" element ={<DeleteEvent/>}/>
+       <Route path ="/events/:event_id/edit" element={<EditEventForm/>}/>
     </Routes>
     
     </>

@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const api = axios.create({
     baseURL:'https://events-be-mnrt.onrender.com/api'
 })
@@ -14,7 +15,6 @@ export const fetchAllEvents= ()=>{
     return api.get('/events').then(({data})=>{
         return data.events
     }).catch((err)=>{
-        console.log(err)
         return Promise.reject(err.response)
     })
 }
@@ -60,4 +60,40 @@ export const postAttendee=(attendee)=>{
         throw err;
     });
 }
-
+export const updateEvent = (event_id, updatedFields) => {
+    // Format dates for PostgreSQL timestamps with timezone
+    const formatDateForPostgres = (dateString) => {
+        if (!dateString) return null;
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return null;
+            
+            // PostgreSQL timestamp with timezone format
+            return date.toISOString();
+        } catch (error) {
+            console.error("Error formatting date:", error);
+            return null;
+        }
+    };
+    
+    // Create a properly formatted event object for the backend
+    const formattedEvent = {
+        ...updatedFields,
+        // Format dates for PostgreSQL
+        start_time: formatDateForPostgres(updatedFields.start_time),
+        end_time: formatDateForPostgres(updatedFields.end_time)
+    };
+    
+    console.log("Sending to backend:", formattedEvent);
+    
+    return api.patch(`/events/${event_id}`, formattedEvent)
+        .then(({ data }) => {
+            console.log("Updated Event:", data.event);
+            return data.event;
+        })
+        .catch((err) => {
+            console.error("API Error:", err.response);
+            return Promise.reject(err.response);
+        });
+};
