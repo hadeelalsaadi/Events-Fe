@@ -86,6 +86,9 @@ const addToGoogleCalendar = (event) => {
   }).execute(callback);
 };
 ```
+## Sign up for Event : 
+- All users can sign up for any Event but they have to be loged in
+**Note** : This app is not verified on Google yet and it is on test mode on Google cloud console. I added my email to the test user to make it work. 
 
 ## 📱 Key Features
 
@@ -109,7 +112,6 @@ const addToGoogleCalendar = (event) => {
   - Screen reader compatible with semantic HTML elements
 
 ```
-
 ## 🚀 Deployment on Netlify
 
 1. Create a new site on Netlify
