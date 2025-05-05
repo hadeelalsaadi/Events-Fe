@@ -1,5 +1,5 @@
-# Event Manager Frontend
-
+# Events Frontend
+# See [Event-be](https://github.com/hadeelalsaadi/Events-be) repo for backend
 React-based frontend for the Event Manager application with Google Calendar integration.
 
 ## 🚀 Live Demo
